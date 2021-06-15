@@ -56,7 +56,8 @@ class VideoListResource(Resource):
         list of videos
         :return:
         """
-        return VideoModel.query.all()
+        qs = VideoModel.query.all()
+        return qs
 
     @marshal_with(resource_fields)
     def post(self):
