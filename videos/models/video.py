@@ -2,10 +2,13 @@
 created by Nagaj at 15/06/2021
 """
 from extensions import db
-from videos.utils.crud import AddUpdateDelete
+from videos.utils.crud import AddUpdateDeleteMixin
 
 
-class VideoModel(db.Model, AddUpdateDelete):
+class VideoModel(db.Model, AddUpdateDeleteMixin):
+    """
+    model for video
+    """
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(100), nullable=False)
     views = db.Column(db.Integer, nullable=False, default=0)
@@ -15,6 +18,10 @@ class VideoModel(db.Model, AddUpdateDelete):
         return f"Video(name = {self.name}, views = {self.views}, likes = {self.likes})"
 
     def to_json(self):
+        """
+        dump video data as json
+        :return:
+        """
         return {
             "id": self.id,
             "name": self.name,
