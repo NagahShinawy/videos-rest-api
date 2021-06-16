@@ -18,4 +18,5 @@ resource_fields = {
     "name": fields.String,
     "views": fields.Integer,
     "likes": fields.Integer,
+    "created_at": fields.DateTime,
 }

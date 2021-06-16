@@ -13,6 +13,7 @@ class VideoResource(Resource):
     """
     get, path, delete for single video
     """
+
     @marshal_with(resource_fields)
     def get(self, id_):
         """
@@ -68,4 +69,4 @@ class VideoListResource(Resource):
         json = video_args.parse_args()
         video = VideoModel(**json)
         video.add()
-        return video.to_json(), HTTPStatus.CREATED
+        return video, HTTPStatus.CREATED
